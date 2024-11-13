@@ -1,0 +1,56 @@
+-- Create table
+create table TEST_STEPS
+(
+  id          NUMBER(22) not null,
+  test_id     NUMBER(22) not null,
+  name        VARCHAR2(200 CHAR) not null,
+  ordernumber NUMBER(22) not null,
+  status      VARCHAR2(10 CHAR),
+  start_time  TIMESTAMP(6),
+  end_time    TIMESTAMP(6),
+  type        VARCHAR2(16 CHAR) not null,
+  sql_code    CLOB,
+  target_user VARCHAR2(255) not null
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 80K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate indexes 
+create index IND_TEST_STEPS on TEST_STEPS (TEST_ID)
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table TEST_STEPS
+  add primary key (ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 80K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table TEST_STEPS
+  add constraint FK_TEST_ID foreign key (TEST_ID)
+  references TESTS (ID);
