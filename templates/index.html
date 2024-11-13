@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Az oldal karakterkódolásának beállítása UTF-8-ra a különleges karakterek támogatásához -->
+    <meta charset="UTF-8">
+    <!-- Az oldal megfelelő méretezése mobil és kisebb képernyők számára -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Az oldal címének megadása, ami a böngésző fülén jelenik meg -->
+    <title>Test Table Contents</title>
+</head>
+<body>
+    <!-- Főcím megjelenítése az oldal tetején -->
+    <h1>Test Table Contents</h1>
+
+    <!-- Táblázat létrehozása az adatbázis eredmények megjelenítéséhez -->
+    <table border="1">
+        <thead>
+            <!-- A táblázat fejlécsora, ahol az oszlopok nevei jelennek meg -->
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- For ciklus, ami a 'tests' listán iterál, egy sor létrehozása minden elemhez -->
+            {% for test in tests %}
+            <tr>
+                <!-- Az aktuális 'test' dict kulcsainak értékeinek megjelenítése a megfelelő cellákban -->
+                <td>{{ test['ID'] }}</td>
+                <td>{{ test['NAME'] }}</td>
+                <td>{{ test['STATUS'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
