@@ -1,0 +1,50 @@
+-- Create table
+create table TESTS
+(
+  id         NUMBER(22) not null,
+  name       VARCHAR2(200 CHAR),
+  status     VARCHAR2(10 CHAR),
+  start_time TIMESTAMP(6),
+  end_time   TIMESTAMP(6),
+  run_id     NUMBER
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 80K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table TESTS
+  add primary key (ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 80K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+alter table TESTS
+  add constraint UNIQUE_NAME unique (NAME)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
